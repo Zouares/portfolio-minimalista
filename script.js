@@ -11,7 +11,7 @@ window.addEventListener('scroll', function() {
     });
 });
 
-conts form = document.querySelector('form');
+const form = document.querySelector('form');
 
 function sendEmail() {
 
