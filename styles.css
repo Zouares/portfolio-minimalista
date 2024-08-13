@@ -5,12 +5,46 @@ body {
     padding: 0;
     line-height: 1.6;
     color: #333;
+    overflow-x: hidden; 
 }
+
+
 
 section {
     padding: 50px 20px;
     text-align: center;
     scroll-snap-align: start;
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    animation: bounce 1.5s infinite;
+}
+
+.arrow {
+    width: 24px;
+    height: 24px;
+    border: solid rgb(0, 0, 0);
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 3px;
+    transform: rotate(45deg);
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
 }
 
 .content {
@@ -30,11 +64,11 @@ p {
 
 
 #bem-vindo {
-    background-color: #f4f4f4;
+    background-color: #ececec;
     height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center;;
 }
 
 
@@ -144,19 +178,119 @@ p {
 
 ::-webkit-scrollbar {
     width: 8px; 
+    
 }
 
 ::-webkit-scrollbar-track {
     background: #f4f4f4; 
     border-radius: 10px; 
+    
 }
 
 ::-webkit-scrollbar-thumb {
     background-color: #888; 
     border-radius: 10px; 
     border: 2px solid #f4f4f4; 
+    
 }
 
 ::-webkit-scrollbar-thumb:hover {
     background-color: #555; 
+    
+}
+
+.skills-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+    margin: 50px 0;
+}
+
+.skills-section {
+    width: 45%;
+}
+
+.skills-section h2 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.skill {
+    margin-bottom: 20px;
+}
+
+.skill span {
+    display: block;
+    font-size: 1.2em;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.progress-bar {
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 8px;
+}
+
+.progress {
+    height: 100%;
+    background-color: #82a0a4;
+    border-radius: 10px;
+}
+
+.contact-container {
+    padding: 50px 20px;
+    background-color: #f9f9f9;
+    text-align: center;
+    margin-top: 50px;
+    border-top: 1px solid #e0e0e0;
+}
+
+.contact-container h2 {
+    font-size: 1.5em;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-form label {
+    font-size: 1em;
+    color: #333;
+    text-align: left;
+    margin-bottom: 5px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+    color: #333;
+    box-sizing: border-box;
+}
+
+.contact-form button {
+    background-color: #459498;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.contact-form button:hover {
+    background-color: #255153;
 }
