@@ -19,7 +19,6 @@ section {
 .scroll-indicator {
     position: absolute;
     bottom: 20px;
-    left: 50%;
     transform: translateX(-50%);
     z-index: 1;
     animation: bounce 1.5s infinite;
