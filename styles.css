@@ -97,12 +97,9 @@ p {
 
 .about-container .image img {
     width: 100%;
-    border-radius: 10px;
     border-radius: 50%;
-    
-    
+    object-fit: cover;
 }
-
 
 #meus-projetos {
     background-color: #f4f4f4;
@@ -237,6 +234,7 @@ p {
     height: 100%;
     background-color: #82a0a4;
     border-radius: 10px;
+
 }
 
 .contact-container {
@@ -292,4 +290,217 @@ p {
 
 .contact-form button:hover {
     background-color: #255153;
+}
+
+.typing-container {
+    background-color: #1e1e1e;
+    color: #d4d4d4;
+    padding: 20px;
+    border-radius: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    margin-top: 0px;
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; 
+    margin-left: 0%; 
+}
+
+.code-output {
+    font-size: 16px;
+    white-space: pre-wrap;
+    margin: 0; 
+    width: 100%; 
+    
+}
+
+.blinking-cursor {
+    animation: blink 0.7s steps(2) infinite;
+    font-weight: bold;
+    margin-left: 2px;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+
+
+.slider {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 800px; 
+}
+
+
+.slide-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    will-change: transform;
+}
+
+
+.slide-item {
+    min-width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    position: relative;
+}
+
+
+.slide-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+}
+
+
+.nav-dots {
+    text-align: center;
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+}
+
+.nav-dots .dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin: 0 5px;
+    background-color: #ddd;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.nav-dots .dot.active {
+    background-color: #333;
+}
+
+
+.nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.nav-button:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.nav-button.prev {
+    left: 10px;
+}
+
+.nav-button.next {
+    right: 10px;
+}
+
+.slider-button::before {
+    content: '';
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 5px;
+    transform: rotate(45deg);
+    width: 16px;
+    height: 16px;
+}
+
+
+.slider-dots {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.slider-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #bbb;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.slider-dot.active {
+    background-color: #333;
+}
+
+
+.slider-button.prev::before {
+    transform: rotate(135deg);
+    size: 300%;
+}
+
+.slider-button.next::before {
+    transform: rotate(315deg);
+}
+
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+}
+
+.modal-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+}
+
+.modal-content img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.modal-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 100%;
+    cursor: pointer;
+    font-size: 20px;
+    transition: background-color 0.3s, transform 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.modal-close:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    transform: scale(1.1);
 }
