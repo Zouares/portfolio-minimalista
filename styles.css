@@ -53,7 +53,7 @@ section {
 }
 
 h1, h2 {
-    margin-bottom: 20px;
+    margin-bottom: 100px;
     font-weight: 400;
 }
 
@@ -68,7 +68,7 @@ p {
     height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: center;;
+    align-items: center;
 }
 
 
