@@ -1,94 +1,113 @@
-const slides = document.querySelectorAll('.slide-item');
-const dotsContainer = document.querySelector('.nav-dots');
-let currentIndex = 0;
-
-function updateSlidePosition() {
-    const slideTrack = document.querySelector('.slide-track');
-    slideTrack.style.transform = `translateX(-${currentIndex * 100}%)`;
-    updateDots();
-}
-
-function updateDots() {
-    const dots = document.querySelectorAll('.nav-dots .dot');
-    dots.forEach((dot, index) => {
-        dot.classList.toggle('active', index === currentIndex);
-    });
-}
-
-function createDots() {
-    slides.forEach((_, index) => {
-        const dot = document.createElement('span');
-        dot.classList.add('dot');
-        dot.addEventListener('click', () => {
-            currentIndex = index;
-            updateSlidePosition();
-        });
-        dotsContainer.appendChild(dot);
-    });
-}
-
-function nextSlide() {
-    currentIndex = (currentIndex + 1) % slides.length;
-    updateSlidePosition();
-}
-
-function prevSlide() {
-    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-    updateSlidePosition();
-}
-
-document.querySelector('.nav-button.next').addEventListener('click', nextSlide);
-document.querySelector('.nav-button.prev').addEventListener('click', prevSlide);
-
-createDots();
-updateSlidePosition();
-
-
-setInterval(nextSlide, 20000); 
-
 
 const modal = document.querySelector('.modal');
 const modalContent = modal.querySelector('.modal-content img');
 const modalClose = document.querySelector('.modal-close');
+const modalDescription = document.querySelector('.modal-description');
+const modalLink = document.querySelector('.modal-link');
 
-document.querySelectorAll('.slide-item img').forEach(img => {
-    img.addEventListener('click', () => {
-        modal.style.display = 'flex';
-        modalContent.src = img.src;
+
+function openModal(imgSrc, description, link) {
+    modal.style.display = 'flex';
+    modal.classList.add('show');
+    modalContent.src = imgSrc;
+    modalDescription.textContent = description;
+    modalLink.href = link;
+}
+
+
+function closeModal() {
+    modal.classList.remove('show');
+    setTimeout(() => {
+        modal.style.display = 'none';
+    }, 400); 
+}
+
+
+document.querySelectorAll('.project-card').forEach(card => {
+    card.addEventListener('click', () => {
+        const img = card.querySelector('img');
+        const description = card.getAttribute('data-description');
+        const link = card.getAttribute('data-link');
+        openModal(img.src, description, link);
     });
 });
 
-modalClose.addEventListener('click', () => {
-    modal.style.display = 'none';
-});
+
+modalClose.addEventListener('click', closeModal);
+
 
 window.addEventListener('click', (event) => {
     if (event.target === modal) {
-        modal.style.display = 'none';
+        closeModal();
     }
 });
 
 
 document.addEventListener("DOMContentLoaded", function() {
-    const form = document.querySelector('.contact-form');
-    
-    form.addEventListener('submit', function(event) {
-        event.preventDefault(); 
-        
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const message = document.getElementById('message').value;
-        
-        Email.send({
-            SecureToken: "F45FD676AB9A561A194D6A2EAA596E6089FB", // Substitua pelo seu SecureToken do SMTPJS
-            To: 'gabrielssoaress02@gmail.com', 
-            From: email,
-            Subject: `Nova mensagem de ${name}`,
-            Body: `Nome: ${name}<br>Email: ${email}<br>Mensagem: ${message}`
-        }).then(
-            message => alert("Mensagem enviada com sucesso!")
-        ).catch(
-            error => alert("Erro ao enviar a mensagem. Tente novamente.")
-        );
+    const sections = document.querySelectorAll('section');
+
+    function revealSection(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }
+
+    const observer = new IntersectionObserver(revealSection, {
+        threshold: 0.1
+    });
+
+    sections.forEach(section => {
+        observer.observe(section);
     });
 });
+
+document.addEventListener('scroll', function() {
+    const scrolled = window.scrollY;
+    const background = document.querySelector('#bem-vindo .backgroundimagem img');
+    background.style.transform = `translateY(${scrolled * 0.5}px)`;
+});
+
+document.addEventListener('scroll', function() {
+    const scrolled = window.scrollY;
+    const background = document.querySelector('#bem-vindo .backgroundimagem img');
+    const welcomeText = document.querySelector('#bem-vindo h1');
+    
+    
+    
+    background.style.transform = `translateY(${scrolled * 0.5}px)`;
+    
+    
+    if (scrolled > 100) { 
+        welcomeText.classList.add('hidden');
+    } else {
+        welcomeText.classList.remove('hidden');
+    }
+    if (scrolled < 100) { 
+        welcomeText.classList.add('show');
+    } else {
+        welcomeText.classList.remove('show');
+    }
+
+});
+
+window.addEventListener('scroll', function() {
+    const scrollY = window.scrollY;
+    const indicator = document.querySelector('.scroll-indicator');
+    
+    
+    if (scrollY > 350) {
+        indicator.classList.add('hide');
+    } else {
+        indicator.classList.remove('hide');
+    }
+    if (scrollY < 350) {
+        indicator.classList.add('show');
+    } else {
+        indicator.classList.remove('show');
+    }
+    
+
+})
+
